@@ -1,5 +1,5 @@
 # 최단거리를 묻고, 간선의 가중이 모두 동일하니 BFS로 해결   
-
+# 첫트: 시간초과 -> readline 사용
 from collections import deque
 import sys
 
