@@ -37,5 +37,5 @@ for i in range(N):
             cnt_dict[count] = bfs(i,j,count)
 
 print(count)
-for i in sorted(cnt_dict.values()):
+for i in sorted(cnt_dict.values()): # 오름차순으로 정렬하라고 했음! 문제 잘읽기
     print(i)
