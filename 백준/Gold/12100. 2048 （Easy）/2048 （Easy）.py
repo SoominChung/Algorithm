@@ -1,5 +1,13 @@
-
 from collections import deque
+'''
+[교훈 or point]
+
+- for&list 대신 deque 사용하니까 깔끔해짐. (for&list 썼을 때는 if문 덕지덕지 붙고 안깔끔했는데)
+
+
+- 로직 짤 때 가능한 경우를 몇 가지 적어두고 모든 경우에 대해 잘 작동하는지 확인 후 코드로 옮기기
+    - ex. [2 2 2 2 2], [2 2 4 2], [2 4 4 2], [2], [2 2]
+'''
 
 N = int(input())
 init_board = []
