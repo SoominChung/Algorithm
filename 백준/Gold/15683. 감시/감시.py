@@ -1,5 +1,4 @@
-
-from itertools import product
+#from itertools import product
 
 N, M = map(int, input().split())
 office, cctv_indices,wall_indices, total_cctv_options = [], [], [], {1:[],2:[],3:[],4:[],5:[]}
@@ -13,6 +12,7 @@ for i in range(N):
             wall_indices.append((i,j))
 
 ## 가능한 후보 조합을 미리 만들어두기
+'''
 tt = list(product([0,1,2,3],repeat=4))
 full_hubo = []
 for ii in tt:
@@ -20,9 +20,21 @@ for ii in tt:
         t_ = list(ii)
         t_.extend(list(jj))
         full_hubo.append(t_)
-n_cctv = len(cctv_indices)
 total_hubo = [tuple(lst[:n_cctv]) for lst in full_hubo]
 total_hubo = list(set(total_hubo)) # 중복 제거 but 불가능한 조합도 좀 섞여있음
+'''
+# 위에처럼 product 사용하는 대신 진법 사용하면 n_cctv 길이에 대해 바로 만들 수 있음!
+base = 4 # 이동 가능한 방향 개수
+total_hubo = []
+n_cctv = len(cctv_indices)
+for i in range(base**n_cctv):
+    tmp = i
+    tmp_hubo = []
+    for _ in range(n_cctv):
+        tmp_hubo.append(tmp%4)
+        tmp //=4
+    tmp_hubo.reverse()
+    total_hubo.append(tmp_hubo)
 
 # 0: blank, 1~5: cctv, 6: wall, 7: looking
 def right(x,y):
